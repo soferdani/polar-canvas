@@ -137,7 +137,4 @@ export function useDrawChart() {
     }
 
     return { drawTicks, drawLine, drawCircle, drawPie, fill, clear,   saveState, restoreState, setStrokeStyle, setFillStyle, canvasRef }
-
-    
-
 }

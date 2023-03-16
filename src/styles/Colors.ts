@@ -1,0 +1,25 @@
+export const Colors = {
+    PlaybackMode :  "#F6EA74",
+    DefaultMode : "#00FFFF",
+    TrainingMode : "#2979ff",
+    TextGray : "#7f8694",
+    StrokeGreen : "#00FF25",
+    StrokeRed : "#ff2846",
+    StrokeBlue :" #3E566F",
+    StrokeLightBlue : "#00FFFF",
+    NavbarBlue:" #122438",
+    White : "#ffffff",
+    Black : "#000000",
+    LightGray: "#142233",
+
+    Entity_Friend : "RGB(80,150,150)",
+    //Entity_Assumed_Friendly : "RGB(58,100,240)",
+    Entity_Hostile : "RGB(241,32,42)",
+    Entity_Neutral : "RGB(30,185,25)",
+    // Entity_Pending : "RGB(255,131,193)",
+    // Entity_Unknown : "RGB(172,156,19)",
+    // Entity_Suspect : "RGB(130,24,230)",
+    
+    Blue_4: "#3e566f",
+    Blue_8: "#061423",
+}
