@@ -32,9 +32,7 @@ export function Canvas({width, height}: PolarDiagramProps) { // add number of ri
         // context?.strokeRect(50, 50, 50, 50);
         chartDrawer.current.clear();
         chartDrawer.current.setStrokeStyle(Colors.StrokeBlue, 1, [0, 0]);
-
-
-
+        chartDrawer.current.drawCircle(5,5,5,5,5)
     });
 
 

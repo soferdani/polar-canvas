@@ -71,7 +71,7 @@ export function useDrawChart() {
     }
 
 
-    const drawCircle = (radius: number, xCenter: number, yCenter: number, startAngle = 0, endAngle = 180) => {
+    const drawCircle = (radius: number, xCenter: number, yCenter: number, startAngle = 0, endAngle = 180) => {  
         if (context.current) {
             context.current.moveTo(xCenter, yCenter);
             context.current.beginPath();
