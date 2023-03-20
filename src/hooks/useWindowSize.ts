@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 
-const useWindowSize = () => { // overkill- need to fix this
+const useWindowSize = () => { // overkill- need to fix this might not be necessary
 	const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
 	const handleSize = () => {
