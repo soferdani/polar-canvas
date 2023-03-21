@@ -18,7 +18,7 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
       // //helper values to draw degrees around the radar
     const [degreeScaleThetas, setDegreeScaleThetas] = useState([] as Array<number>);
     const [degreeScaleValues, setDegreeScaleValues] = useState([] as Array<number>);
-    
+    const shipDirectionAngle: null | number = null;
 
 
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -47,7 +47,24 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
 
     const outerDegrees = useCallback(() => {
         return degreeScaleValues.map((value, index) => { 
-
+            const posx = Math.round((pxRadius) * Math.cos(degreeScaleThetas[index])) + "px";
+            const posy = Math.round((pxRadius) * Math.sin(degreeScaleThetas[index])) + "px";
+            
+            const left = width / 2;
+            const top = height / 2;
+            
+            const topPos = top - (value === 0 ? 28 : value === 180 ? -12 : 7) - parseInt(posy.slice(0, -2)) + "px";
+            const leftPos = left - (value < 10 ? 3 : value < 100 ? 6 : 10) + parseInt(posx.slice(0, -2)) + "px";
+    
+            return (
+                <span
+                    key={"polar-map-inner-degree-" + value}
+                    className="degree-scale-inner-value"
+                    style={{ top: topPos, left: leftPos }}
+                >
+                    {value}
+                </span>
+            )
         })
     },[degreeScaleThetas,degreeScaleValues])
 
@@ -89,7 +106,7 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
         ></canvas>
         <div className="degree-scales">
             <div className="inner-scales"></div>
-            <div className="outer-scales"></div>
+                <div className="outer-scales">{outerDegrees()}</div>
         </div>
     </>
     )
