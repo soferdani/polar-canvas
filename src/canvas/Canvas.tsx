@@ -52,10 +52,11 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
             
             const left = width / 2;
             const top = height / 2;
-            
-            const topPos = top - (value === 0 ? 28 : value === 180 ? -12 : 7) - parseInt(posy.slice(0, -2)) + "px";
-            const leftPos = left - (value < 10 ? 3 : value < 100 ? 6 : 10) + parseInt(posx.slice(0, -2)) + "px";
-    
+
+            const topPos = top - (value === 0 ? 7 : value === 180 ? 6 : 7 )  - parseInt(posy.slice(0, -2)) + "px";
+            const leftPos = left - (value < 10 ? 3 : value < 100 ? 4 : 4) - (value > 200 ? 9 : 1)  + parseInt(posx.slice(0, -2)) + "px";
+        
+
             return (
                 <span
                     key={"polar-map-inner-degree-" + value}
@@ -72,7 +73,7 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
     // start drawing
     useEffect(() => {
         chartDrawer.current.clear();
-        chartDrawer.current.setStrokeStyle(Colors.StrokeBlue, 1, [2, 10]);
+        chartDrawer.current.setStrokeStyle(Colors.StrokeBlue, 1, [0, 0]);
          // Draw the outer circle
         
         chartDrawer.current.drawCircle(   
@@ -83,8 +84,8 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
             360
         )
         // Draw the inner circles
-        // chartDrawer.current.setStrokeStyle(Colors.StrokeBlue, 1, [2, 10]);
-        for (let i = 1; i <= innerCircles; i++) { 
+        chartDrawer.current.setStrokeStyle(Colors.StrokeBlue, 1, [2, 10]);
+        for (let i = 1; i <= innerCircles-1; i++) { 
             chartDrawer.current.drawCircle(   
                 (pxRadius - 10) - (i * innerCirclesFraction), // radius
                 pxCenter.y,
@@ -106,7 +107,7 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
         ></canvas>
         <div className="degree-scales">
             <div className="inner-scales"></div>
-                <div className="outer-scales">{outerDegrees()}</div>
+            <div className="outer-scales">{outerDegrees()}</div>
         </div>
     </>
     )

@@ -22,7 +22,7 @@ function App() {
 
 	return (
 		<div className='App'>
-			<Canvas width={500} height={500} innerCircles={5} ></Canvas>
+			<Canvas width={500} height={500} innerCircles={4} ></Canvas>
 			<div>
 				{" "}
 				{windowSize.width}px / {windowSize.height}px
