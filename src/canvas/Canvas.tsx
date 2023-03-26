@@ -20,14 +20,15 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
     const [degreeScaleValues, setDegreeScaleValues] = useState([] as Array<number>);
     const shipDirectionAngle: null | number = null;
 
-
-    const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null); // why ?
     const [radiusMin, radiusMax] = [38, 218]; 
     // const innerCircles = 5 // temporary
     const chartDrawer = useRef(useDrawChart());
     const innerCirclesFraction = radiusMax / innerCircles;
     const degreeScale = 10; // can get it from props
 
+
+      // //set thetas and values for inner degree scales
     useEffect(() => {
         let innerThetas = [];
         let values = [];
@@ -43,6 +44,16 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
     },[degreeScale])
 
 
+    // the value of the distance scale
+    const distances = Array.from({ length: innerCircles - 1 }, (v, i) => { 
+        let distanceBetweenCircles = (radiusMax / innerCircles) - 34.5; // 34.5 is temp value until data from api
+        return Math.round(distanceBetweenCircles * (i + 1)) 
+    })
+    
+
+    const mappedDistances = distances.map((distance) => {
+        return <span key={"polar-map-distance-" + distance}>{distance}NM</span>;
+    });
 
 
     const outerDegrees = useCallback(() => {
@@ -105,6 +116,18 @@ export function Canvas({width, height, innerCircles}: PolarDiagramProps) { // ad
             height={height}
             width={width}
         ></canvas>
+            <div
+                className="distance-scales"
+                style={{padding: `113.5px`}}
+            >
+                
+                <div
+                    className="values-top"
+                    style={{gap: 41}}
+                >
+                    {mappedDistances}
+                </div>
+            </div>
         <div className="degree-scales">
             <div className="inner-scales"></div>
             <div className="outer-scales">{outerDegrees()}</div>

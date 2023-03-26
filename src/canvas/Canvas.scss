@@ -30,3 +30,32 @@
         position: absolute;
     }
 } 
+
+
+.distance-scales {
+    position: absolute;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 50%;
+    transform: translate(-50%);
+
+    .values-top,
+    .values-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        span {
+            font-size: 9px;
+            font-style: italic;
+            color: #7f8694;
+        }
+    }
+
+    .values-top {
+        flex-direction: column-reverse;
+    }
+}
